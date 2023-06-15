@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "menu.h"
 
+/**
+ * 
+ * @brief Despliega el menú
+ *
+ */
 int mostrarMenu()
 {
     int opcion;

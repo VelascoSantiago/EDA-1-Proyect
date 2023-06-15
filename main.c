@@ -22,34 +22,32 @@ int main()
                 break;
             }
             case 2: {
-                printf("Opción seleccionada: Ver las listas creadas\n");
-                // Aquí iría el código para ver las listas creadas
-                // (mostrar sus características, etc.)
+                printf("Opción seleccionada: Ver la lista en pantalla\n");
+                mostrarLista(lista);
                 break;
             }
             case 3: {
                 printf("Opción seleccionada: Agregar un alumno a la lista\n");
-                Alumno alumno;
-
+                char nombre[50], apellido[50];
+                int cuenta;
+                double calif[3];
                 printf("Ingrese el nombre del alumno: ");
-                scanf("%s", alumno.nombre);
+                scanf("%s", nombre);
 
                 printf("Ingrese el apellido del alumno: ");
-                scanf("%s", alumno.apellido);
+                scanf("%s", apellido);
 
                 printf("Ingrese el número de cuenta del alumno: ");
-                scanf("%d", &alumno.numeroCuenta);
+                scanf("%d", &cuenta);
 
                 printf("Ingrese las calificaciones del alumno:\n");
                 int i;
                 for (i = 0; i < 3; i++)
                 {
                     printf("Calificación %d: ", i + 1);
-                    scanf("%lf", &alumno.calificaciones[i]);
+                    scanf("%lf", &calif[i]);
                 }
-
-                agregarNodo(lista, alumno);
-                printf("Se ha agregado al alumno a la lista.\n");
+                añadir_Alumno(lista, nombre, apellido, cuenta, calif);
                 break;
             }
             case 4: {
@@ -58,17 +56,12 @@ int main()
                 break;
             }
             case 5: {
-                printf("Opción seleccionada: Ver la lista en pantalla\n");
-                mostrarLista(lista);
-                break;
-            }
-            case 6: {
                 printf("Opción seleccionada: Ordenar los promedios de mayor a menor\n");
                 ordenarPromedios(lista);
                 printf("La lista ha sido ordenada por promedios de mayor a menor.\n");
                 break;
             }
-            case 7: {
+            case 6: {
                 printf("Opción seleccionada: Salir del menú\n");
                 eliminarLista(lista);
                 break;

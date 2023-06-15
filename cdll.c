@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "cdll.h"
 
 CDLL* crearLista()
@@ -94,4 +95,19 @@ void eliminarLista(CDLL* lista)
 void ordenarPromedios(CDLL* lista)
 {
     // Aqu� ir�a el c�digo para ordenar los promedios de mayor a menor
+}
+void añadir_Alumno(CDLL* lista, char nombre[], char apellido[], int cuenta, double calificaciones[])
+{
+    Alumno alumno;
+    strncpy(alumno.nombre, nombre, 50);
+    strncpy(alumno.apellido, apellido, 50);
+    alumno.numeroCuenta = cuenta;
+    int i;
+    for( i = 0; i < 3; i++)
+    {
+        alumno.calificaciones[i] = calificaciones[i];
+    }  
+
+    agregarNodo(lista, alumno);
+    printf("Se ha agregado al alumno a la lista.\n");
 }

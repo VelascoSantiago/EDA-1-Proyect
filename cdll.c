@@ -55,21 +55,17 @@ double calcularPromedio(Alumno alumno)
 
 void mostrarLista(CDLL* lista)
 {
-    if (lista->len == 0)
-    {
-        printf("La lista est� vac�a.\n");
-        return;
-    }
+    printf( "\tNombre\t\t\tApellido\t\t\tNo. de cuenta\n");
 
     Node* actual = lista->first;
     int i = 1;
 
     while (actual != NULL)
     {
-        printf("Alumno %d:\n", i);
-        printf("Nombre: %s\n", actual->alumno.nombre);
-        printf("Apellido: %s\n", actual->alumno.apellido);
-        printf("N�mero de cuenta: %d\n", actual->alumno.numeroCuenta);
+        printf("%d\t", i);
+        printf("%s\t\t\t", actual->alumno.nombre);
+        printf("%s\t\t\t", actual->alumno.apellido);
+        printf("%d", actual->alumno.numeroCuenta);
 
         // Aqu� ir�a el c�digo para mostrar las calificaciones del alumno actual
 

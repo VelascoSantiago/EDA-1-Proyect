@@ -51,19 +51,15 @@ int main()
                 break;
             }
             case 4: {
-                printf("Opción seleccionada: Calcular el promedio de la lista\n");
-                // Aquí iría el código para calcular el promedio de la lista
-                break;
-            }
-            case 5: {
                 printf("Opción seleccionada: Ordenar los promedios de mayor a menor\n");
                 ordenarPromedios(lista);
                 printf("La lista ha sido ordenada por promedios de mayor a menor.\n");
                 break;
             }
-            case 6: {
+            case 5: {
                 printf("Opción seleccionada: Salir del menú\n");
                 eliminarLista(lista);
+                exit (-1);
                 break;
             }
             default: {

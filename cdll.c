@@ -5,9 +5,9 @@
 
 
 /**
- * @brief Crea la lista de alumnos
+ * @brief Crea la lista de alumnos.
  *
- * @post Una lista existente en el heap
+ * @post Una lista existente en el heap.
  *
  */
 CDLL* crearLista()
@@ -28,12 +28,12 @@ CDLL* crearLista()
 }
 
 /**
- * @brief Agrega un nodo a la lista
+ * @brief Agrega un nodo a la lista.
  *
- * @param lista Una referencia a la lista
- * @param item El nodo a colocar
+ * @param lista Una referencia a la lista.
+ * @param item El nodo a colocar.
  *
- * @post Coloca al cursor en el nuevo nodo
+ * @post Coloca al cursor en el nuevo nodo.
  *
  */
 void agregarNodo(CDLL* lista, Alumno alumno)
@@ -64,21 +64,68 @@ void agregarNodo(CDLL* lista, Alumno alumno)
     lista->len++;
 }
 
-double calcularPromedio(Alumno alumno)
+/**
+ * @brief Ordena la lista en orden de promedios.
+ *
+ * @param lista Una referencia a la lista.
+ *
+ * @post La lista queda ordenada según lo que se pidió.
+ *
+ */
+void ordenarPromedios(CDLL* lista)
 {
-    // Aqu� ir�a el c�digo para calcular el promedio del alumno actual
-    return 0.0;
+    Node* actual = lista->first;
+    int swapped;
+
+    if (actual == NULL)
+        return;
+
+    do {
+        swapped = 0;
+        actual = lista->first;
+
+        while (actual->next != NULL) {
+            double promedio_actual = calcularPromedio(actual->alumno);
+            double promedio_siguiente = calcularPromedio(actual->next->alumno);
+
+            if (promedio_actual < promedio_siguiente) {
+                Alumno temp = actual->alumno;
+                actual->alumno = actual->next->alumno;
+                actual->next->alumno = temp;
+                swapped = 1;
+            }
+
+            actual = actual->next;
+        }
+    } while (swapped);
 }
 
 /**
- * @brief Muestra la lista en pantalla
+ * @brief Agrega un nodo a la lista.
  *
- * @param lista Una referencia a la lista que se mostrará
+ * @param alumno El alumno del que se obtendra el promedio.
+ *
+ * @return El promedio del alumno.
+ *
+ */
+double calcularPromedio(Alumno alumno)
+{
+    double suma = 0.0;
+    for (int i = 0; i < 3; i++) {
+        suma += alumno.calificaciones[i];
+    }
+    return suma / 3.0;
+}
+
+/**
+ * @brief Muestra la lista en pantalla.
+ *
+ * @param lista Una referencia a la lista que se mostrará.
  *
  */
 void mostrarLista(CDLL* lista)
 {
-    printf( "\tNombre\t\t\tApellido\t\t\tNo. de cuenta\n");
+    printf( "\tNombre\t\t\t\tApellido\t\t\tNo. de cuenta\t\t\t\tPromedio\n");
 
     Node* actual = lista->first;
     int i = 1;
@@ -86,11 +133,10 @@ void mostrarLista(CDLL* lista)
     while (actual != NULL)
     {
         printf("%d\t", i);
-        printf("%s\t\t\t", actual->alumno.nombre);
+        printf("%s\t\t\t\t", actual->alumno.nombre);
         printf("%s\t\t\t", actual->alumno.apellido);
-        printf("%d", actual->alumno.numeroCuenta);
-
-        // Aqu� ir�a el c�digo para mostrar las calificaciones del alumno actual
+        printf("%d\t\t\t\t", actual->alumno.numeroCuenta);
+        printf("%.2lf", calcularPromedio(actual->alumno));
 
         printf("\n");
 
@@ -117,11 +163,6 @@ void eliminarLista(CDLL* lista)
     }
 
     free(lista);
-}
-
-void ordenarPromedios(CDLL* lista)
-{
-    // Aqu� ir�a el c�digo para ordenar los promedios de mayor a menor
 }
 
 /**

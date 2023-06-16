@@ -36,7 +36,7 @@ CDLL* crearLista()
  * @post Coloca al cursor en el nuevo nodo.
  *
  */
-void agregarNodo(CDLL* lista, Alumno alumno)
+void agregarNodo(CDLL* lista, Alumno* alumno)
 {
     Node* nuevoNodo = (Node*)malloc(sizeof(Node));
     if (nuevoNodo == NULL)
@@ -45,7 +45,7 @@ void agregarNodo(CDLL* lista, Alumno alumno)
         return;
     }
 
-    nuevoNodo->alumno = alumno;
+    nuevoNodo->alumno = *alumno;
     nuevoNodo->next = NULL;
     nuevoNodo->prev = NULL;
 
@@ -125,6 +125,11 @@ double calcularPromedio(Alumno alumno)
  */
 void mostrarLista(CDLL* lista)
 {
+    if ( NULL == lista )
+    {
+        printf( "La lista no existe\n" );
+        return;
+    }
     printf( "\tNombre\t\t\t\tApellido\t\t\tNo. de cuenta\t\t\t\tPromedio\n");
 
     Node* actual = lista->first;
@@ -179,14 +184,15 @@ void eliminarLista(CDLL* lista)
  */
 void añadir_Alumno(CDLL* lista, char nombre[], char apellido[], int cuenta, double calificaciones[])
 {
-    Alumno alumno;
-    strncpy(alumno.nombre, nombre, 50);
-    strncpy(alumno.apellido, apellido, 50);
-    alumno.numeroCuenta = cuenta;
+
+    Alumno* alumno = ( Alumno* ) malloc ( sizeof ( Alumno ) );
+    strncpy(alumno->nombre, nombre, 50);
+    strncpy(alumno->apellido, apellido, 50);
+    alumno->numeroCuenta = cuenta;
     int i;
     for( i = 0; i < 3; i++)
     {
-        alumno.calificaciones[i] = calificaciones[i];
+        alumno->calificaciones[i] = calificaciones[i];
     }  
 
     agregarNodo(lista, alumno);

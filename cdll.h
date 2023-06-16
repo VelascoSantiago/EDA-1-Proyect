@@ -19,7 +19,7 @@ typedef struct
 } CDLL;
 
 CDLL* crearLista();
-void agregarNodo(CDLL* lista, Alumno alumno);
+void agregarNodo(CDLL* lista, Alumno *alumno);
 void ordenarPromedios(CDLL* lista);
 double calcularPromedio(Alumno alumno);
 void mostrarLista(CDLL* lista);

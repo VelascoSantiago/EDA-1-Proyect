@@ -64,14 +64,16 @@ void agregarNodo(CDLL* lista, Alumno* alumno)
     lista->len++;
 }
 
-/**
- * @brief Ordena la lista en orden de promedios.
- *
- * @param lista Una referencia a la lista.
- *
- * @post La lista queda ordenada según lo que se pidió.
- *
- */
+ /**
+* @brief Ordena la lista en orden de promedios.
+*
+* @param lista Una referencia a la lista.
+*
+* @post La lista queda ordenada según lo que se pidió.
+*
+*/
+
+ 
 void ordenarPromedios(CDLL* lista)
 {
     Node* actual = lista->first;
@@ -153,7 +155,7 @@ void mostrarLista(CDLL* lista)
 /**
  * @brief Destruye una lista.
  *
- * @param this Una lista.
+ * @param lista Una lista.
  */
 void eliminarLista(CDLL* lista)
 {

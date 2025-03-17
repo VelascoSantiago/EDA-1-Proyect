@@ -2,9 +2,14 @@
 #include "menu.h"
 
 /**
- * 
- * @brief Despliega el menú.
+ * @brief Muestra el menú principal en pantalla y captura la opción del usuario.
  *
+ * @return La opción seleccionada por el usuario como un entero.
+ *         - 1: Crear una lista.
+ *         - 2: Ver la lista en pantalla.
+ *         - 3: Agregar un alumno a la lista.
+ *         - 4: Ordenar los promedios de mayor a menor.
+ *         - 5: Salir del menú.
  */
 int mostrarMenu()
 {

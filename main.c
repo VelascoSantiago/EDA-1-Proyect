@@ -1,17 +1,32 @@
+/**
+ * @file main.c
+ * @brief Programa principal para gestionar una lista doblemente enlazada circular de alumnos.
+ * 
+ * Este programa permite crear una lista de alumnos, agregar alumnos, mostrar la lista,
+ * ordenar los alumnos por promedio y eliminar la lista antes de salir.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "alumno.h"
 #include "cdll.h"
 #include "menu.h"
 
+/**
+ * @brief Función principal del programa.
+ * 
+ * @return Retorna 0 al finalizar el programa correctamente.
+ * 
+ * El programa ejecuta un menú interactivo que permite gestionar la lista de alumnos.
+ */
 int main()
 {
-    CDLL* lista = NULL;
-    int opcion;
+    CDLL* lista = NULL;  /**< Puntero a la lista de alumnos */
+    int opcion;          /**< Variable para almacenar la opción del menú */
 
     do
     {
-        opcion = mostrarMenu();
+        opcion = mostrarMenu(); /**< Llama a la función para mostrar el menú y obtiene la opción seleccionada */
 
         switch (opcion)
         {
@@ -31,6 +46,7 @@ int main()
                 char nombre[50], apellido[50];
                 int cuenta;
                 double calif[3];
+
                 printf("Ingrese el nombre del alumno: ");
                 scanf("%s", nombre);
 
@@ -41,12 +57,12 @@ int main()
                 scanf("%d", &cuenta);
 
                 printf("Ingrese las calificaciones del alumno:\n");
-                int i;
-                for (i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     printf("Calificación %d: ", i + 1);
                     scanf("%lf", &calif[i]);
                 }
+
                 añadir_Alumno(lista, nombre, apellido, cuenta, calif);
                 break;
             }
@@ -59,7 +75,7 @@ int main()
             case 5: {
                 printf("Opción seleccionada: Salir del menú\n");
                 eliminarLista(lista);
-                exit (-1);
+                exit(-1);
                 break;
             }
             default: {
@@ -73,4 +89,3 @@ int main()
 
     return 0;
 }
-
